@@ -260,6 +260,10 @@ class BatchVectorLayerSaver:
             self.save_layer_format("CSV")
         else:
             pass
+        if self.dlg.checkBox_sqlite.isChecked():
+            self.save_layer_format("SQLite")
+        else:
+            pass
 
     def save_layer_format(self, format):
         print("letsgo")
@@ -287,6 +291,8 @@ class BatchVectorLayerSaver:
                         writer = QgsVectorFileWriter.writeAsVectorFormat( f, output_dir + f.name() + ".GeoJSON", "utf-8", crs, format)
                     if format == "PGDump":
                         writer = QgsVectorFileWriter.writeAsVectorFormat( f, output_dir + f.name() + ".sql", "utf-8", crs, format)
+                    if format == "SQLite":
+                        writer = QgsVectorFileWriter.writeAsVectorFormat( f, output_dir + f.name() + ".sqlite", "utf-8", crs, format)
                     if format == "GPKG":
                         writer = QgsVectorFileWriter.writeAsVectorFormat( f, output_dir + f.name() + ".gpkg", "utf-8", crs, format)
                     if writer[0] == QgsVectorFileWriter.NoError:
