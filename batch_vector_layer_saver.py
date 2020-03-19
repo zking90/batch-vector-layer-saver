@@ -292,7 +292,7 @@ class BatchVectorLayerSaver:
                     if format == "PGDump":
                         writer = QgsVectorFileWriter.writeAsVectorFormat( f, output_dir + f.name() + ".sql", "utf-8", crs, format)
                     if format == "SQLite":
-                        writer = QgsVectorFileWriter.writeAsVectorFormat( f, output_dir + f.name() + ".sqlite", "utf-8", crs, format)
+                        writer = QgsVectorFileWriter.writeAsVectorFormat( f, output_dir + f.name() + ".sqlite", "utf-8", crs, format, datasourceOptions= ['SPATIALITE=YES'], layerOptions=['FORMAT=SPATIALITE', 'SPATIAL_INDEX=YES'])
                     if format == "GPKG":
                         writer = QgsVectorFileWriter.writeAsVectorFormat( f, output_dir + f.name() + ".gpkg", "utf-8", crs, format)
                     if writer[0] == QgsVectorFileWriter.NoError:
